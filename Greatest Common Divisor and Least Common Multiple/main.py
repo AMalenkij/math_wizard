@@ -1,5 +1,5 @@
 # greatest common division(GCD)
-def gcd(a=34, b=12):
+def gcd(a: int = 34, b: int = 12) -> int:
     ans = 0
     while True:
         print('test')
@@ -13,14 +13,8 @@ def gcd(a=34, b=12):
                 break
 
 
-def multiply(lst):
-    answer = 1
-    for i in lst:
-        answer *= i
-    return answer
-
-
 if __name__ == '__main__':
     assert gcd(36, 24) == 12
     assert gcd(34, 12) == 2
     assert gcd(15, 10) == 5
+    assert gcd(90, 20) == 10
