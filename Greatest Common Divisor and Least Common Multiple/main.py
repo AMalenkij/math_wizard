@@ -1,16 +1,31 @@
 # greatest common division(GCD)
-def gcd(a: int = 34, b: int = 12) -> int:
-    ans = 0
-    while True:
-        print('test')
-        if a > b:
-            ans = a - b
-        elif b > a:
-            ans = b - a
-        if ans > 0:
-            if a % ans == 0 and b % ans == 0:
-                return ans
-                break
+def gcd(a: int = 90, b: int = 20) -> int:
+    answer = []
+    for x in range(min(len(factor(a)), len(factor(b)))):
+        if factor(a)[x] == factor(b)[x]:
+            answer.append(factor(a)[x])
+    return multiply(answer)
+
+
+def multiply(lst):
+    answer = 1
+    for i in lst:
+        answer *= i
+    return answer
+
+
+def factor(n):
+    anse = []
+    d = 2
+    while d * d <= n:
+        if n % d == 0:
+            anse.append(d)
+            n //= d
+        else:
+            d += 1
+    if n > 1:
+        anse.append(n)
+    return anse
 
 
 if __name__ == '__main__':
