@@ -1,20 +1,24 @@
 # greatest common division(GCD)
 def gcd(a: int = 90, b: int = 20) -> int:
     answer = []
-    for x in range(min(len(factor(a)), len(factor(b)))):
-        if factor(a)[x] == factor(b)[x]:
-            answer.append(factor(a)[x])
+    copy_b = factor(b)
+    for t in factor(a):
+        for z in copy_b:
+            if t == z:
+                answer.append(t)
+                copy_b.pop(copy_b.index(z))
+                break
     return multiply(answer)
 
 
-def multiply(lst):
+def multiply(lst: list) -> list:
     answer = 1
     for i in lst:
         answer *= i
     return answer
 
 
-def factor(n):
+def factor(n: int) -> list:
     anse = []
     d = 2
     while d * d <= n:
