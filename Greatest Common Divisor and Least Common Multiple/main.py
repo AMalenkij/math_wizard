@@ -1,14 +1,27 @@
 # Greatest common divisor(GCD)
 def gcd(*args: int) -> int:
     answer = []
+    count = 0
+    list_factor = []
+    for _ in args:
+        list_factor.append(factor(_))
+
+    print(list_factor)
     for g in args[1:]:
-        copy_b = factor(g)
-        for t in factor(args[0]):
-            for z in copy_b:
+        print (g)
+        for t in list_factor[0]: # заменить на лист
+            for z in factor(g):
+                print(list_factor[args.index(g)])
                 if t == z:
-                    answer.append(t)
-                    copy_b.pop(copy_b.index(z))
-                    break
+                    count += 1
+                    list_factor.pop(list_factor[args.index(g)][factor(g).index(z)])
+                    if count == len(args) - 1:
+                        answer.append(t)
+                        count = 0
+                        break
+                    else:
+                        break
+    print(answer)
     return multiply(answer)
 
 
@@ -66,6 +79,8 @@ if __name__ == '__main__':
     assert gcd(36, 24, 12) == 12
     assert gcd(34, 12, 4) == 2
     assert gcd(15, 10, 5) == 5
-    assert gcd(90, 20, 11) == 10
+    assert gcd(90, 20, 10) == 10
     assert gcd(13, 11, 2) == 1
     assert gcd(24, 32, 16) == 8
+
+    assert gcd(36, 24, 12, 4) == 4
