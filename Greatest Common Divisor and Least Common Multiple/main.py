@@ -1,5 +1,6 @@
 # Greatest common divisor(GCD)
 def gcd(*args: int) -> int:
+    print('start-----------------------')
     answer = []
     count = 0
     list_factor = []
@@ -8,20 +9,21 @@ def gcd(*args: int) -> int:
 
     print(list_factor)
     for g in args[1:]:
-        print (g)
-        for t in list_factor[0]: # заменить на лист
-            for z in factor(g):
-                print(list_factor[args.index(g)])
+        for t in list_factor[0]:
+            for z in list_factor[args.index(g)]:
                 if t == z:
+                    print(t, z, g)
                     count += 1
-                    list_factor.pop(list_factor[args.index(g)][factor(g).index(z)])
+                    list_factor[args.index(g)].pop(list_factor[args.index(g)].index(z))
                     if count == len(args) - 1:
+                        print('gggg')
                         answer.append(t)
+                        #                        list_factor[0].pop(list_factor[0].index(t))
                         count = 0
                         break
-                    else:
-                        break
+                    break
     print(answer)
+    print(list_factor)
     return multiply(answer)
 
 
