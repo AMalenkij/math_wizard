@@ -2,24 +2,25 @@
 def gcd(*args: int) -> int:
     print('start-----------------------')
     answer = []
-    count = 0
+    count = []
     list_factor = []
     for _ in args:
         list_factor.append(factor(_))
 
     print(list_factor)
-    for g in args[1:]:
+    for g in range(1, len(args)):
         for t in list_factor[0]:
-            for z in list_factor[args.index(g)]:
+            for z in list_factor[g]:
                 if t == z:
                     print(t, z, g)
-                    count += 1
-                    list_factor[args.index(g)].pop(list_factor[args.index(g)].index(z))
-                    if count == len(args) - 1:
-                        print('gggg')
+                    list_factor[g].pop(list_factor[g].index(z))
+                    count.append(t)
+                    print(f'это счетчик {count}')
+                    if count.count(t) == len(args) - 1 and g == len(args)-1:# написать сильней условие
+                        print('if усоловие')
                         answer.append(t)
-                        #                        list_factor[0].pop(list_factor[0].index(t))
-                        count = 0
+#                        list_factor[0].pop(list_factor[0].index(t))
+                        count.clear()
                         break
                     break
     print(answer)
