@@ -1,30 +1,24 @@
 # Greatest common divisor(GCD)
 def gcd(*args: int) -> int:
-    print('start-----------------------')
+    # print('start-----------------------')
+    # print(args)
     answer = []
-    count = []
     list_factor = []
     for _ in args:
         list_factor.append(factor(_))
-
-    print(list_factor)
+    # print(list_factor)
     for g in range(1, len(args)):
-        for t in list_factor[0]:
-            for z in list_factor[g]:
-                if t == z:
-                    print(t, z, g)
-                    list_factor[g].pop(list_factor[g].index(z))
-                    count.append(t)
-                    print(f'это счетчик {count}')
-                    if count.count(t) == len(args) - 1 and g == len(args)-1:# написать сильней условие
-                        print('if усоловие')
-                        answer.append(t)
-#                        list_factor[0].pop(list_factor[0].index(t))
-                        count.clear()
-                        break
+        for a in list_factor[0]:
+            for b in list_factor[g]:
+                if a == b:
+                    list_factor[g].pop(list_factor[g].index(a))
+                    if g == len(args) - 1:
+                        answer.append(a)
+                    # print(f'g =  {g}')
+                    # print(f'debag {b}')
                     break
-    print(answer)
-    print(list_factor)
+    #print(list_factor)
+    #print(f' Answer =  {answer}')
     return multiply(answer)
 
 
@@ -86,4 +80,9 @@ if __name__ == '__main__':
     assert gcd(13, 11, 2) == 1
     assert gcd(24, 32, 16) == 8
 
-    assert gcd(36, 24, 12, 4) == 4
+    assert gcd(36, 24, 12, 72) == 12
+    assert gcd(34, 12, 4, 8) == 2
+    assert gcd(15, 10, 5, 25) == 5
+    assert gcd(90, 20, 10, 110) == 10
+    assert gcd(13, 11, 2, 3) == 1
+    assert gcd(24, 32, 16, 48) == 8
