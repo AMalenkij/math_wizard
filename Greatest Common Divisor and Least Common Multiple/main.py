@@ -1,24 +1,16 @@
+from collections import Counter
+
+
 # Greatest common divisor(GCD)
 def gcd(*args: int) -> int:
-    # print('start-----------------------')
-    # print(args)
     answer = []
-    list_factor = []
-    for _ in args:
-        list_factor.append(factor(_))
-    # print(list_factor)
-    for g in range(1, len(args)):
-        for a in list_factor[0]:
-            for b in list_factor[g]:
-                if a == b:
-                    list_factor[g].pop(list_factor[g].index(a))
-                    if g == len(args) - 1:
-                        answer.append(a)
-                    # print(f'g =  {g}')
-                    # print(f'debag {b}')
-                    break
-    #print(list_factor)
-    #print(f' Answer =  {answer}')
+    dct = Counter(factor(args[0]))
+    for x in range(1, len(args)):
+        cnt = Counter(factor(args[x]))
+        for key, value in cnt.items():
+            dct[key] = str(dct[key]) + str(value)
+            if len(args) == len(dct[key]):
+                answer.append(int(key) ** int(min(dct[key])))
     return multiply(answer)
 
 
@@ -86,3 +78,5 @@ if __name__ == '__main__':
     assert gcd(90, 20, 10, 110) == 10
     assert gcd(13, 11, 2, 3) == 1
     assert gcd(24, 32, 16, 48) == 8
+
+    assert gcd(36, 24, 12, 72, 12) == 12
