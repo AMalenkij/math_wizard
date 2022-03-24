@@ -1,8 +1,12 @@
 from collections import Counter
 
 
-# Greatest common divisor(GCD)
 def gcd(*args: int) -> int:
+    """
+    In mathematics, the greatest common divisor (GCD)
+    of two or more integers, which are not all zero,
+    is the largest positive integer that divides each of the integers.
+    """
     answer = []
     dct = Counter(factor(args[0]))
     for _ in range(1, len(args)):
@@ -14,8 +18,11 @@ def gcd(*args: int) -> int:
     return multiply(answer)
 
 
-# Least common multiple(LCM)
 def lcm(*args: int) -> int:
+    """
+    The least common multiple (LCM)
+    of two integers is the smallest positive integer that is a multiple of both numbers.
+    """
     answer = []
     dct = Counter(factor(args[0]))
     for _ in range(1, len(args)):
@@ -27,7 +34,8 @@ def lcm(*args: int) -> int:
             elif key not in dct:
                 dct[key] = value
     for key, value in dct.items():
-        answer.append(key ** value)
+        for _ in range(value):
+            answer.append(key)
     return multiply(answer)
 
 
@@ -39,6 +47,9 @@ def multiply(lst: list) -> int:
 
 
 def factor(n: int) -> list:
+    """
+    A factor is a number that divides another number leaving no remainder.
+    """
     answer = []
     d = 2
     while d * d <= n:
