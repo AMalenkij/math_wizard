@@ -75,5 +75,3 @@ class Calculator:
         of two integers is the smallest positive integer that is a multiple of both numbers.
         """
         return self.multiply(self.prime_factorization_lcm(*args))
-
-
