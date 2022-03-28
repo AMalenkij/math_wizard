@@ -2,13 +2,16 @@ from collections import Counter
 
 
 class Calculator:
-    @staticmethod
-    def factor(n: int) -> list:
+    def factor(self, n: int) -> list:
         """
         A factor is a number that divides another number leaving no remainder.
         """
         answer = []
         d = 2
+
+        if n < 0:
+            raise ZeroDivisionError("Sorry, no numbers below zero")
+
         while d * d <= n:
             if n % d == 0:
                 answer.append(d)
