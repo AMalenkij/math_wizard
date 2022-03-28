@@ -33,7 +33,6 @@ def test_gcd_positive_four(a, b, c, d, expected_result):
 
 
 def test_gcd_positive_five():
-    assert Calculator().gcd(36, 24, 12, 72, 12) == 12
     assert Calculator().gcd(252, 180, 96, 60, 24) == 12
 
 
@@ -64,3 +63,9 @@ def test_gcd_positive_three(a, b, c, expected_result):
                                                          (24, 32, 48, 16, 96)])
 def test_gcd_positive_four(a, b, c, d, expected_result):
     assert Calculator().lcm(a, b, c, d) == expected_result
+
+
+@pytest.mark.parametrize('expected_exception, divider', [(ZeroDivisionError, -1)])
+def test_factor_negative(expected_exception, divider):
+    with pytest.raises(expected_exception):
+        Calculator().factor(divider)
